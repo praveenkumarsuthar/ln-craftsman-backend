@@ -15,11 +15,11 @@ app.use("/uploads", express.static("uploads"));
 
 // ---------- POSTGRES CONNECTION ----------
 const pool = new Pool({
-  user: "ln_admin",
-  host: "localhost",
-  database: "lncraftsman",
-  password: "ln_admin_12#",   // CHANGE THIS
-  port: 5444,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 pool.on("error", (err) => {
   console.error("Unexpected DB error", err);
